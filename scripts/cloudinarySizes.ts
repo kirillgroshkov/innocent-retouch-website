@@ -24,17 +24,16 @@ const list = util.promisify(cloudinary.v2.api.resources)
 
 list({
   max_results: 500,
+}).then(r => {
+  const resources = r.resources
+  const images = r.resources.map(_r => `${_r.public_id}.${_r.format}`)
+  console.log(images)
+
+  const sizes = resources.reduce((_sizes, _r) => {
+    const id = `${_r.public_id}.${_r.format}`
+    _sizes[id] = `${_r.width}x${_r.height}`
+
+    return _sizes
+  }, {})
+  console.log(sizes)
 })
-  .then(r => {
-    const resources = r.resources
-    const images = r.resources.map(_r => `${_r.public_id}.${_r.format}`)
-    console.log(images)
-
-    const sizes = resources.reduce((_sizes, _r) => {
-      const id = `${_r.public_id}.${_r.format}`
-      _sizes[id] = `${_r.width}x${_r.height}`
-
-      return _sizes
-    }, {})
-    console.log(sizes)
-  })
