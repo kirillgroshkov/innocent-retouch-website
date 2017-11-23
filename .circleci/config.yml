@@ -1,0 +1,36 @@
+#
+# validate yml:
+# circleci config validate -c .circleci/config.yml
+#
+
+version: 2
+jobs:
+  build:
+    docker:
+      - image: naturalcycles1/ci-slim:latest
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: greenkeeper-lockfile-update
+      - restore_cache:
+          key: dependencies-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-v1-{{ checksum "yarn.lock" }}
+      - run: yarn --pure-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: dependencies-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-v1-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Submodule pull, Prettier
+          command: |
+            [[ $CIRCLE_BRANCH = greenkeeper* ]] && exit 0
+            yarn prettier
+            git commit -a -m "prettier" || true
+            ahead=`git rev-list HEAD --not --remotes | wc -l | awk '{print $1}'`
+            echo ahead=$ahead
+            [ "$ahead" != "0" ] && git push --set-upstream origin $CIRCLE_BRANCH && echo "pushed, exiting" && exit 1
+            echo "nothing to push, proceeding"
+
+      #- run: yarn jest-ci
+      - run: yarn build
+      - run: greenkeeper-lockfile-upload
