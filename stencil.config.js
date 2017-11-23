@@ -7,12 +7,10 @@ exports.config = {
         'app-footer',
         'home-page',
         'contact-page',
-      ]
+      ],
     },
   ],
-  collections: [
-    { name: '@stencil/router' },
-  ],
+  collections: [{ name: '@stencil/router' }],
 }
 
 exports.devServer = {
