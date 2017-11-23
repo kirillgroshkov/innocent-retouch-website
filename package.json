@@ -10,7 +10,7 @@
     "start": "npm run dev",
     "clean-www": "rm -rf ./www",
     "tslint": "tslint './src/**/*.{ts,tsx}' -e './src/components.d.ts' -t stylish --force --fix",
-    "prettier-do": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss,graphql,json}'",
+    "prettier-do": "prettier --write '{src,scripts}/**/*.{js,jsx,ts,tsx,css,scss,graphql,json}'",
     "prettier": "yarn prettier-do && yarn tslint"
   },
   "dependencies": {
