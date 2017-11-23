@@ -1,0 +1,42 @@
+{
+  "name": "innocent-retouch-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "stencil build --prerender",
+    "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
+    "serve": "stencil-dev-server",
+    "start": "npm run dev",
+    "clean-www": "rm -rf ./www",
+    "tslint": "tslint './src/**/*.{ts,tsx}' -t stylish --force --fix",
+    "prettier-do": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss,graphql,json}'",
+    "prettier": "yarn prettier-do && yarn tslint"
+  },
+  "dependencies": {
+    "@stencil/core": "next",
+    "@stencil/router": "latest",
+    "bootstrap": "4.0.0-beta",
+    "jquery": "^3.2.1",
+    "popper.js": "1.11.0"
+  },
+  "devDependencies": {
+    "@stencil/dev-server": "latest",
+    "@stencil/utils": "latest",
+    "@types/bluebird": "^3.5.18",
+    "@types/fs-extra": "^4.0.5",
+    "@types/klaw-sync": "^1.1.3",
+    "@types/sharp": "^0.17.5",
+    "bluebird": "^3.5.1",
+    "cloudinary": "^1.9.1",
+    "dotenv": "^4.0.0",
+    "fs-extra": "^4.0.2",
+    "klaw-sync": "^3.0.2",
+    "prettier": "^1.8.2",
+    "sharp": "^0.18.4",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.0"
+  },
+  "author": "Kirill Groshkov <1@inventix.ru>",
+  "license": "MIT"
+}

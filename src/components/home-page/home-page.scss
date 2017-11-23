@@ -1,0 +1,21 @@
+home-page {
+  .photos {
+    margin-right: -8px;
+  }
+
+  /*.photos {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  img {
+    height: 300px;
+    flex-grow: 1;
+    object-fit: cover;
+    border: 4px solid rgba(0, 0, 0, 0);
+  }*/
+  img {
+    // border: 4px solid rgba(0, 0, 0, 0);
+    // transition: all 0.3s ease-out;
+  }
+}

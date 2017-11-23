@@ -1,0 +1,5 @@
+#
+# .prettierignore
+#
+
+/src/components.d.ts
