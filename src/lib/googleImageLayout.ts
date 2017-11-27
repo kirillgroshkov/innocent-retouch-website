@@ -1,10 +1,10 @@
-// tslint:disable
+// tslint:disable:one-variable-per-declaration prefer-for-of
 class GoogleImageLayout {
   private HEIGHTS = []
   private margin = 8
 
-  private turnObjToArray(obj) {
-    return [].map.call(obj, function(element) {
+  private turnObjToArray (obj) {
+    return [].map.call(obj, function (element) {
       return element
     })
   }
@@ -20,7 +20,7 @@ class GoogleImageLayout {
    *
    * @return {[type]}        the height
    */
-  private _getHeigth(images, width, margin) {
+  private _getHeigth (images, width, margin) {
     width -= images.length * margin
 
     let r = 0,
@@ -33,10 +33,10 @@ class GoogleImageLayout {
         parseInt(img.getAttribute('data-height'))
     }
 
-    return width / r //have to round down because Firefox will automatically roundup value with number of decimals > 3
+    return width / r // have to round down because Firefox will automatically roundup value with number of decimals > 3
   }
 
-  private _setHeight(images, height) {
+  private _setHeight (images, height) {
     this.HEIGHTS.push(height)
     // console.log('set height ' + this.HEIGHTS.length)
 
@@ -54,7 +54,7 @@ class GoogleImageLayout {
     }
   }
 
-  init(): void {
+  init (): void {
     this.HEIGHTS = []
     const nodes = document.querySelectorAll('div[data-google-image-layout]')
     const length = nodes.length
@@ -67,8 +67,8 @@ class GoogleImageLayout {
     // console.log('aligned')
   }
 
-  private align(elem): void {
-    //get the data attribute
+  private align (elem): void {
+    // get the data attribute
 
     const containerWidth = elem.clientWidth
     const maxHeight = parseInt(elem.getAttribute('data-max-height') || 120)
@@ -98,4 +98,3 @@ class GoogleImageLayout {
 
 const i = new GoogleImageLayout()
 export const googleImageLayout = () => i.init()
-// ; (window as any).googleImageLayout = googleImageLayout
