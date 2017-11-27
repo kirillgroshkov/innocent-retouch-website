@@ -1,3 +1,4 @@
+// tslint:disable
 class GoogleImageLayout {
   private HEIGHTS = []
   private margin = 8
