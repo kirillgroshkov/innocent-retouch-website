@@ -3,3 +3,7 @@
 #
 
 /src/components.d.ts
+/node_modules
+/package.json
+/tsconfig.json
+/www

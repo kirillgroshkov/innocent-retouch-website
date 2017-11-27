@@ -9,12 +9,16 @@
     "serve": "stencil-dev-server",
     "start": "npm run dev",
     "clean-www": "rm -rf ./www",
-    "tslint": "tslint './src/**/*.{ts,tsx}' -e './src/components.d.ts' -t stylish --force --fix",
-    "prettier-do": "prettier --write '{src,scripts}/**/*.{js,jsx,ts,tsx,css,scss,graphql,json}' '*.{md,js}'",
-    "prettier": "yarn prettier-do && yarn tslint"
+    "tslint-all": "tslint './src/**/*.{ts,tsx}' -e './src/components.d.ts' -t stylish --fix",
+    "prettier-do": "prettier --write '**/*.{js,jsx,ts,tsx,css,scss,graphql,json}' '*.{md,js}'",
+    "prettier-all": "yarn prettier-do && yarn tslint-all"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": ["prettier --write", "tslint -e './src/components.d.ts' -t stylish --fix", "git add"],
+    "**/*.{css,scss,graphql,json,md}": ["prettier --write", "git add"]
   },
   "dependencies": {
-    "@stencil/core": "next",
+    "@stencil/core": "0.0.8-7",
     "@stencil/router": "latest",
     "bootstrap": "4.0.0-beta",
     "jquery": "^3.2.1",
@@ -31,7 +35,9 @@
     "cloudinary": "^1.9.1",
     "dotenv": "^4.0.0",
     "fs-extra": "^4.0.2",
+    "husky": "^0.14.3",
     "klaw-sync": "^3.0.2",
+    "lint-staged": "^5.0.0",
     "prettier": "^1.8.2",
     "sharp": "^0.18.4",
     "tslint": "^5.8.0",
