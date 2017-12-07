@@ -19,7 +19,7 @@
     "**/*.{css,scss,graphql,json,md}": ["prettier --write", "git add"]
   },
   "dependencies": {
-    "@stencil/core": "0.0.8-7",
+    "@stencil/core": "0.0.8",
     "@stencil/router": "latest",
     "bootstrap": "4.0.0-beta",
     "jquery": "^3.2.1",
