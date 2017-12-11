@@ -35,7 +35,7 @@
     "bluebird": "^3.5.1",
     "cloudinary": "^1.9.1",
     "dotenv": "^4.0.0",
-    "fs-extra": "^4.0.2",
+    "fs-extra": "^5.0.0",
     "husky": "^0.14.3",
     "klaw-sync": "^3.0.2",
     "lint-staged": "^5.0.0",
