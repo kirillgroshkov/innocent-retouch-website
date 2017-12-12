@@ -29,7 +29,7 @@
     "@stencil/dev-server": "latest",
     "@stencil/utils": "latest",
     "@types/bluebird": "^3.5.18",
-    "@types/fs-extra": "^4.0.5",
+    "@types/fs-extra": "^5.0.0",
     "@types/klaw-sync": "^1.1.3",
     "@types/sharp": "^0.17.5",
     "bluebird": "^3.5.1",
