@@ -5,6 +5,7 @@ export interface ImgData {
   h?: number
   fullw: number
   fullh: number
+  alt: string
 }
 
 export const images = {
@@ -75,6 +76,37 @@ export const imageSizes = {
   'fashion_beauty/nina_holma_model_1.jpg': '1440x2160',
 }
 
+export const imagesAlt = {
+  'fashion_beauty/dv_moshizi_1.jpg': 'Henry Moshizi, Damernas Värld',
+  'fashion_beauty/dv_moshizi_3.jpg': 'Henry Moshizi, Damernas Värld',
+  'fashion_beauty/dv_moshizi_2.jpg': 'Henry Moshizi, Damernas Värld',
+  'fashion_beauty/linn_f_elite_3.jpg': 'Morgane Lithander',
+  'fashion_beauty/linn_f_elite_2.jpg': 'Morgane Lithander',
+  'fashion_beauty/linn_f_elite_1.jpg': 'Morgane Lithander',
+  'fashion_beauty/linn_f_elite_4.jpg': 'Morgane Lithander',
+  'fashion_beauty/linn_f_elite_5.jpg': 'Morgane Lithander',
+  'fashion_beauty/nina_holma_model_1.jpg': 'Nina Holma',
+  'fashion_beauty/nina_holma_model_2.jpg': 'Nina Holma',
+  'interior/bar_central_birger_5.jpg': 'Idha Lindhag, Bar Central Birger',
+  'interior/bar_central_birger_2.jpg': 'Idha Lindhag, Bar Central Birger',
+  'interior/bar_central_birger_3.jpg': 'Idha Lindhag, Bar Central Birger',
+  'interior/bar_central_birger_4.jpg': 'Idha Lindhag, Bar Central Birger',
+  'interior/bar_central_birger_1.jpg': 'Idha Lindhag, Bar Central Birger',
+  'interior/nk_home_2.jpg': 'Ida Lindhag, NK Home',
+  'interior/nk_home_1.jpg': 'Ida Lindhag, NK Home',
+  'interior/nk_home_5.jpg': 'Ida Lindhag, NK Home',
+  'interior/nk_home_6.jpg': 'Ida Lindhag, NK Home',
+  'interior/nk_home_3.jpg': 'Ida Lindhag, NK Home',
+  'interior/nk_home_4.jpg': 'Ida Lindhag, NK Home',
+  'interior/nk_home_7.jpg': 'Ida Lindhag, NK Home',
+  'still_life/drink.jpg': 'Pontus Lindström',
+  'still_life/guerlain.jpg': 'Magnus Cramer',
+  'still_life/tom_ford_noir.jpg': 'Magnus Cramer',
+  'still_life/dv_product.jpg': 'Olivia Jeczmyk, Damernas Värld',
+  'still_life/dv_prada.jpg': 'Olivia Jeczmyk, Damernas Värld',
+  'still_life/oprah_mag.jpg': 'Magnus Cramer, Oprah Magazine',
+}
+
 export const imagesPrefix = 'https://res.cloudinary.com/kirill'
 
 export function getImgData (segment: string): ImgData[] {
@@ -85,6 +117,7 @@ export function getImgData (segment: string): ImgData[] {
       small: `${imagesPrefix}/w_2800,h_1600,c_fit,q_auto:best/${i}`, // :best
       fullw: wh[0],
       fullh: wh[1],
+      alt: imagesAlt[i] || '',
     }
   })
 }

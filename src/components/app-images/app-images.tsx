@@ -48,10 +48,11 @@ export class AppImages {
     return (
       <div class="images">
         {this.layoutImgs.map(i => (
-          <a href={i.full} target="_blank">
+          <a href={i.full} target="_blank" rel="noopener">
             <img
               src={i.small}
               style={{ width: `${i.w}px`, height: `${i.h}px` }}
+              alt={i.alt}
             />
           </a>
         ))}
