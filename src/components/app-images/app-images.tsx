@@ -19,14 +19,14 @@ export class AppImages {
   @Prop() maxHeight = 120
   @State() layoutImgs: ImgData[] = []
 
-  componentDidLoad () {
+  componentDidLoad (): void {
     // alert('The component did load APP');
     // console.log('The component did load APP')
     this.update()
   }
 
   @Listen('window:resize')
-  update () {
+  update (): void {
     // console.log('resized')
     // if (!this.el) return
     const imagesEl = this.el.querySelector('div.images')
@@ -35,6 +35,7 @@ export class AppImages {
     const cw = imagesEl.clientWidth
     // console.log('cw:' + cw)
 
+    if (!this.imgs) return // for SSR
     doImageLayout(cw, this.maxHeight, 8, this.imgs) // mutates this.imgs
     this.layoutImgs = [...this.imgs]
     // console.log(this.layoutImgs)

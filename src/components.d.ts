@@ -4,15 +4,15 @@
  * and imports for stencil collections that might be configured in your stencil.config.js file
  */
 
-import '@stencil/router'
+import '@stencil/router';
 
 import {
   ImgData,
-} from './cnst/images'
+} from './cnst/images';
 
 import {
   AppFooter as AppFooter
-} from './components/app-footer/app-footer'
+} from './components/app-footer/app-footer';
 
 declare global {
   interface HTMLAppFooterElement extends AppFooter, HTMLElement {
@@ -20,21 +20,21 @@ declare global {
   var HTMLAppFooterElement: {
     prototype: HTMLAppFooterElement;
     new (): HTMLAppFooterElement;
-  }
+  };
   interface HTMLElementTagNameMap {
-    "app-footer": HTMLAppFooterElement
+    "app-footer": HTMLAppFooterElement;
   }
   interface ElementTagNameMap {
-    "app-footer": HTMLAppFooterElement
+    "app-footer": HTMLAppFooterElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "app-footer": JSXElements.AppFooterAttributes
+      "app-footer": JSXElements.AppFooterAttributes;
     }
   }
   namespace JSXElements {
     export interface AppFooterAttributes extends HTMLAttributes {
-
+      
     }
   }
 }
@@ -42,7 +42,7 @@ declare global {
 
 import {
   AppHeader as AppHeader
-} from './components/app-header/app-header'
+} from './components/app-header/app-header';
 
 declare global {
   interface HTMLAppHeaderElement extends AppHeader, HTMLElement {
@@ -50,21 +50,21 @@ declare global {
   var HTMLAppHeaderElement: {
     prototype: HTMLAppHeaderElement;
     new (): HTMLAppHeaderElement;
-  }
+  };
   interface HTMLElementTagNameMap {
-    "app-header": HTMLAppHeaderElement
+    "app-header": HTMLAppHeaderElement;
   }
   interface ElementTagNameMap {
-    "app-header": HTMLAppHeaderElement
+    "app-header": HTMLAppHeaderElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "app-header": JSXElements.AppHeaderAttributes
+      "app-header": JSXElements.AppHeaderAttributes;
     }
   }
   namespace JSXElements {
     export interface AppHeaderAttributes extends HTMLAttributes {
-
+      
     }
   }
 }
@@ -72,7 +72,7 @@ declare global {
 
 import {
   AppImages as AppImages
-} from './components/app-images/app-images'
+} from './components/app-images/app-images';
 
 declare global {
   interface HTMLAppImagesElement extends AppImages, HTMLElement {
@@ -80,21 +80,21 @@ declare global {
   var HTMLAppImagesElement: {
     prototype: HTMLAppImagesElement;
     new (): HTMLAppImagesElement;
-  }
+  };
   interface HTMLElementTagNameMap {
-    "app-images": HTMLAppImagesElement
+    "app-images": HTMLAppImagesElement;
   }
   interface ElementTagNameMap {
-    "app-images": HTMLAppImagesElement
+    "app-images": HTMLAppImagesElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "app-images": JSXElements.AppImagesAttributes
+      "app-images": JSXElements.AppImagesAttributes;
     }
   }
   namespace JSXElements {
     export interface AppImagesAttributes extends HTMLAttributes {
-
+      
         imgs?: ImgData[],
         maxHeight?: number
     }
@@ -104,7 +104,7 @@ declare global {
 
 import {
   AppRoot as AppRoot
-} from './components/app-root/app-root'
+} from './components/app-root/app-root';
 
 declare global {
   interface HTMLAppRootElement extends AppRoot, HTMLElement {
@@ -112,21 +112,21 @@ declare global {
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
     new (): HTMLAppRootElement;
-  }
+  };
   interface HTMLElementTagNameMap {
-    "app-root": HTMLAppRootElement
+    "app-root": HTMLAppRootElement;
   }
   interface ElementTagNameMap {
-    "app-root": HTMLAppRootElement
+    "app-root": HTMLAppRootElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "app-root": JSXElements.AppRootAttributes
+      "app-root": JSXElements.AppRootAttributes;
     }
   }
   namespace JSXElements {
     export interface AppRootAttributes extends HTMLAttributes {
-
+      
     }
   }
 }
@@ -134,7 +134,7 @@ declare global {
 
 import {
   ContactPage as ContactPage
-} from './components/contact-page/contact-page'
+} from './components/contact-page/contact-page';
 
 declare global {
   interface HTMLContactPageElement extends ContactPage, HTMLElement {
@@ -142,21 +142,21 @@ declare global {
   var HTMLContactPageElement: {
     prototype: HTMLContactPageElement;
     new (): HTMLContactPageElement;
-  }
+  };
   interface HTMLElementTagNameMap {
-    "contact-page": HTMLContactPageElement
+    "contact-page": HTMLContactPageElement;
   }
   interface ElementTagNameMap {
-    "contact-page": HTMLContactPageElement
+    "contact-page": HTMLContactPageElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "contact-page": JSXElements.ContactPageAttributes
+      "contact-page": JSXElements.ContactPageAttributes;
     }
   }
   namespace JSXElements {
     export interface ContactPageAttributes extends HTMLAttributes {
-
+      
     }
   }
 }
@@ -164,7 +164,7 @@ declare global {
 
 import {
   MyName as HomePage
-} from './components/home-page/home-page'
+} from './components/home-page/home-page';
 
 declare global {
   interface HTMLHomePageElement extends HomePage, HTMLElement {
@@ -172,21 +172,21 @@ declare global {
   var HTMLHomePageElement: {
     prototype: HTMLHomePageElement;
     new (): HTMLHomePageElement;
-  }
+  };
   interface HTMLElementTagNameMap {
-    "home-page": HTMLHomePageElement
+    "home-page": HTMLHomePageElement;
   }
   interface ElementTagNameMap {
-    "home-page": HTMLHomePageElement
+    "home-page": HTMLHomePageElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "home-page": JSXElements.HomePageAttributes
+      "home-page": JSXElements.HomePageAttributes;
     }
   }
   namespace JSXElements {
     export interface HomePageAttributes extends HTMLAttributes {
-
+      
         segment?: string
     }
   }
