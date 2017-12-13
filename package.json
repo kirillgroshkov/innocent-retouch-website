@@ -15,13 +15,21 @@
     "prettier-all": "yarn prettier-do && yarn tslint-all"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": ["prettier --write", "tslint -e '**/components.d.ts' -t stylish --fix", "git add"],
-    "**/*.{css,scss,graphql,json,md}": ["prettier --write", "git add"]
+    "src/**/*.{ts,tsx}": [
+      "prettier --write",
+      "tslint -e '**/components.d.ts' -t stylish --fix",
+      "git add"
+    ],
+    "**/*.{css,scss,graphql,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "@stencil/core": "0.0.8-7",
     "@stencil/router": "latest",
     "bootstrap": "4.0.0-beta",
+    "fg-loadcss": "^2.0.1",
     "jquery": "^3.2.1",
     "popper.js": "1.12.9"
   },
