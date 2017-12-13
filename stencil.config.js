@@ -5,6 +5,7 @@ exports.config = {
         'app-root',
         'app-header',
         'app-footer',
+        'app-images',
         'home-page',
         'contact-page',
       ],

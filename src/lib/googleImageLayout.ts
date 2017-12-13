@@ -67,11 +67,11 @@ class GoogleImageLayout {
     // console.log('aligned')
   }
 
-  private align (elem): void {
+  private align (elem: HTMLElement): void {
     // get the data attribute
 
     const containerWidth = elem.clientWidth
-    const maxHeight = parseInt(elem.getAttribute('data-max-height') || 120)
+    const maxHeight = parseInt(elem.getAttribute('data-max-height')) || 120
 
     let imgNodes = this.turnObjToArray(elem.querySelectorAll('img'))
 

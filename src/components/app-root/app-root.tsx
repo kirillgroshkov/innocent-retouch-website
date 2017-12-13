@@ -1,18 +1,10 @@
 import { Component } from '@stencil/core'
-import { googleImageLayout } from '../../lib/googleImageLayout'
 
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.scss',
 })
 export class AppRoot {
-  constructor () {
-    window.onresize = () => {
-      // console.log('resize!')
-      googleImageLayout()
-    }
-  }
-
   componentWillLoad () {
     // alert('The component is about to be rendered');
   }
