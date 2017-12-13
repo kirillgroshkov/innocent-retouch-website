@@ -51,7 +51,8 @@ export class AppImages {
     // console.log('render!')
     const dpr = window.devicePixelRatio || 1
     // const dpr = 1
-    const qProfile = dpr >= 2 ? 'low' : 'best'
+    // const qProfile = dpr >= 2 ? 'eco' : 'best'
+    const qProfile = 'best'
 
     this.layoutImgs.forEach(img => {
       Object.assign(img, {
