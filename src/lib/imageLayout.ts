@@ -12,8 +12,8 @@ function _getHeigth (
 
 function _setHeight (images: ImgData[], height: number): void {
   images.forEach(img => {
-    img.w = height * img.fullw / img.fullh
-    img.h = height
+    img.w = Math.floor(height * img.fullw / img.fullh)
+    img.h = Math.floor(height)
   })
 }
 

@@ -25,8 +25,13 @@ export class AppImages {
     this.update()
   }
 
+  breakpoint (m: number, threshold = 50): number {
+    return Math.round(m / 50) * 50
+  }
+
   @Listen('window:resize')
   update (): void {
+    // console.log(window.devicePixelRatio)
     // console.log('resized')
     // if (!this.el) return
     const imagesEl = this.el.querySelector('div.images')
@@ -44,13 +49,30 @@ export class AppImages {
 
   render () {
     // console.log('render!')
+    const dpr = window.devicePixelRatio || 1
+    // const dpr = 1
+    const qProfile = dpr >= 2 ? 'low' : 'best'
+
+    this.layoutImgs.forEach(img => {
+      Object.assign(img, {
+        // wbr: this.breakpoint(img.w * dpr),
+        wbr: img.w * dpr,
+        // hbr: this.breakpoint(img.h * dpr),
+      })
+    })
 
     return (
       <div class="images">
         {this.layoutImgs.map(i => (
-          <a href={i.full} target="_blank" rel="noopener">
+          <a
+            href={`${imagesPrefix}/q_auto:best/${i.imgPart}`}
+            target="_blank"
+            rel="noopener"
+          >
             <img
-              src={i.small}
+              src={`${imagesPrefix}/w_${i.wbr},c_fit,f_auto,q_auto:${
+                qProfile
+              }/${i.imgPart}`}
               style={{ width: `${i.w}px`, height: `${i.h}px` }}
               alt={i.alt}
             />

@@ -1,8 +1,11 @@
 export interface ImgData {
   full: string
   small: string
+  imgPart: string
   w?: number
   h?: number
+  wbr?: number
+  hbr?: number
   fullw: number
   fullh: number
   alt: string
@@ -113,6 +116,7 @@ export function getImgData (segment: string): ImgData[] {
   return images[segment].map(i => {
     const wh = imageSizes[i].split('x')
     return {
+      imgPart: i,
       full: `${imagesPrefix}/q_auto:best/${i}`,
       small: `${imagesPrefix}/w_2800,h_1600,c_fit,q_auto:best/${i}`, // :best
       fullw: wh[0],
