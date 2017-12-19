@@ -64,8 +64,14 @@ export class AppImages {
 
     return (
       <div class="images">
-        {this.layoutImgs.map(i => (
-          <a
+        {this.layoutImgs.map(i => <app-image imgData={i} />)}
+      </div>
+    )
+  }
+}
+
+/*
+<a
             href={`${imagesPrefix}/q_auto:best/${i.imgPart}`}
             target="_blank"
             rel="noopener"
@@ -78,8 +84,4 @@ export class AppImages {
               alt={i.alt}
             />
           </a>
-        ))}
-      </div>
-    )
-  }
-}
+ */

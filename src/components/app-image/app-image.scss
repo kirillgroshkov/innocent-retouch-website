@@ -1,0 +1,12 @@
+img {
+  // filter: blur(50px);
+  filter: blur(20px);
+  /* this is needed so Safari keeps sharp edges */
+  transform: scale(0.95);
+  transition: 1s;
+
+  &.loaded {
+    filter: none;
+    transform: scale(1);
+  }
+}

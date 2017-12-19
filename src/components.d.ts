@@ -71,6 +71,37 @@ declare global {
 
 
 import {
+  AppImage as AppImage
+} from './components/app-image/app-image';
+
+declare global {
+  interface HTMLAppImageElement extends AppImage, HTMLElement {
+  }
+  var HTMLAppImageElement: {
+    prototype: HTMLAppImageElement;
+    new (): HTMLAppImageElement;
+  };
+  interface HTMLElementTagNameMap {
+    "app-image": HTMLAppImageElement;
+  }
+  interface ElementTagNameMap {
+    "app-image": HTMLAppImageElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "app-image": JSXElements.AppImageAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface AppImageAttributes extends HTMLAttributes {
+      
+        imgData?: ImgData
+    }
+  }
+}
+
+
+import {
   AppImages as AppImages
 } from './components/app-images/app-images';
 

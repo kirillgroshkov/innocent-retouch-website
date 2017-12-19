@@ -29,6 +29,7 @@
     "@stencil/core": "0.0.8-7",
     "@stencil/router": "latest",
     "bootstrap": "4.0.0-beta",
+    "cloudinary-core": "^2.4.0",
     "fg-loadcss": "^2.0.1",
     "jquery": "^3.2.1",
     "popper.js": "1.12.9"
