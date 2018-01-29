@@ -42,7 +42,7 @@
     "@types/sharp": "^0.17.5",
     "bluebird": "^3.5.1",
     "cloudinary": "^1.9.1",
-    "dotenv": "^4.0.0",
+    "dotenv": "^5.0.0",
     "fs-extra": "^4.0.2",
     "husky": "^0.14.3",
     "klaw-sync": "^3.0.2",
