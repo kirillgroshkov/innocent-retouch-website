@@ -10,12 +10,21 @@ import {
   ImgData,
 } from './cnst/images';
 
+declare global {
+  interface HTMLStencilElement extends HTMLElement {
+    componentOnReady(): Promise<this>;
+    componentOnReady(done: (ele?: this) => void): void;
+  }
+}
+
+
+
 import {
   AppFooter as AppFooter
 } from './components/app-footer/app-footer';
 
 declare global {
-  interface HTMLAppFooterElement extends AppFooter, HTMLElement {
+  interface HTMLAppFooterElement extends AppFooter, HTMLStencilElement {
   }
   var HTMLAppFooterElement: {
     prototype: HTMLAppFooterElement;
@@ -45,7 +54,7 @@ import {
 } from './components/app-header/app-header';
 
 declare global {
-  interface HTMLAppHeaderElement extends AppHeader, HTMLElement {
+  interface HTMLAppHeaderElement extends AppHeader, HTMLStencilElement {
   }
   var HTMLAppHeaderElement: {
     prototype: HTMLAppHeaderElement;
@@ -75,7 +84,7 @@ import {
 } from './components/app-images/app-images';
 
 declare global {
-  interface HTMLAppImagesElement extends AppImages, HTMLElement {
+  interface HTMLAppImagesElement extends AppImages, HTMLStencilElement {
   }
   var HTMLAppImagesElement: {
     prototype: HTMLAppImagesElement;
@@ -94,9 +103,8 @@ declare global {
   }
   namespace JSXElements {
     export interface AppImagesAttributes extends HTMLAttributes {
-      
-        imgs?: ImgData[],
-        maxHeight?: number
+      imgs?: ImgData[];
+      maxHeight?: number;
     }
   }
 }
@@ -107,7 +115,7 @@ import {
 } from './components/app-root/app-root';
 
 declare global {
-  interface HTMLAppRootElement extends AppRoot, HTMLElement {
+  interface HTMLAppRootElement extends AppRoot, HTMLStencilElement {
   }
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
@@ -137,7 +145,7 @@ import {
 } from './components/contact-page/contact-page';
 
 declare global {
-  interface HTMLContactPageElement extends ContactPage, HTMLElement {
+  interface HTMLContactPageElement extends ContactPage, HTMLStencilElement {
   }
   var HTMLContactPageElement: {
     prototype: HTMLContactPageElement;
@@ -167,7 +175,7 @@ import {
 } from './components/home-page/home-page';
 
 declare global {
-  interface HTMLHomePageElement extends HomePage, HTMLElement {
+  interface HTMLHomePageElement extends HomePage, HTMLStencilElement {
   }
   var HTMLHomePageElement: {
     prototype: HTMLHomePageElement;
@@ -186,9 +194,9 @@ declare global {
   }
   namespace JSXElements {
     export interface HomePageAttributes extends HTMLAttributes {
-      
-        segment?: string
+      segment?: string;
     }
   }
 }
 
+declare global { namespace JSX { interface StencilJSX {} } }

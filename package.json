@@ -20,21 +20,21 @@
       "tslint -e '**/components.d.ts' -t stylish --fix",
       "git add"
     ],
-    "**/*.{css,scss,graphql,json,md}": [
+    "src/**/*.{css,scss,graphql,json,md}": [
       "prettier --write",
       "git add"
     ]
   },
   "dependencies": {
-    "@stencil/core": "0.0.8-7",
-    "@stencil/router": "latest",
-    "bootstrap": "4.0.0-beta",
+    "@stencil/core": "^0.4.1",
+    "@stencil/router": "^0.0.25",
+    "bootstrap": "^4.0.0",
     "fg-loadcss": "^2.0.1",
     "jquery": "^3.2.1",
     "popper.js": "1.12.9"
   },
   "devDependencies": {
-    "@stencil/dev-server": "latest",
+    "@stencil/dev-server": "^0.0.18",
     "@stencil/utils": "latest",
     "@types/bluebird": "^3.5.18",
     "@types/fs-extra": "^4.0.5",
