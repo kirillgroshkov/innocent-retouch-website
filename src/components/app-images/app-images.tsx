@@ -71,9 +71,9 @@ export class AppImages {
             rel="noopener"
           >
             <img
-              src={`${imagesPrefix}/w_${i.wbr},c_fit,f_auto,q_auto:${
-                qProfile
-              }/${i.imgPart}`}
+              src={`${imagesPrefix}/w_${
+                i.wbr
+              },c_fit,f_auto,q_auto:${qProfile}/${i.imgPart}`}
               style={{ width: `${i.w}px`, height: `${i.h}px` }}
               alt={i.alt}
             />
