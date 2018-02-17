@@ -15,11 +15,14 @@ import { doImageLayout } from '../../lib/imageLayout'
 })
 export class AppImages {
   @Element() el: HTMLElement
+  @Prop({ context: 'isServer' })
+  private isServer: boolean
   @Prop() imgs: ImgData[]
   @Prop() maxHeight = 120
   @State() layoutImgs: ImgData[] = []
 
   componentDidLoad (): void {
+    if (this.isServer) return
     // alert('The component did load APP');
     // console.log('The component did load APP')
     this.update()
@@ -40,7 +43,7 @@ export class AppImages {
     const cw = imagesEl.clientWidth
     // console.log('cw:' + cw)
 
-    if (!this.imgs) return // for SSR
+    // if (!this.imgs) return // for SSR
     doImageLayout(cw, this.maxHeight, 8, this.imgs) // mutates this.imgs
     this.layoutImgs = [...this.imgs]
     // console.log(this.layoutImgs)
@@ -48,7 +51,7 @@ export class AppImages {
   }
 
   render () {
-    // console.log('render!')
+    console.log('render! isServer=' + this.isServer)
     const dpr = window.devicePixelRatio || 1
     // const dpr = 1
     // const qProfile = dpr >= 2 ? 'eco' : 'best'
