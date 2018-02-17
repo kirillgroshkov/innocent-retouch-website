@@ -1,5 +1,9 @@
+const sass = require('@stencil/sass')
+
 exports.config = {
-  collections: [{ name: '@stencil/router' }],
+  plugins: [
+    sass(),
+  ],
 }
 
 exports.devServer = {

@@ -26,8 +26,9 @@
     ]
   },
   "dependencies": {
-    "@stencil/core": "^0.4.3",
+    "@stencil/core": "^0.6.0",
     "@stencil/router": "^0.0.25",
+    "@stencil/sass": "^0.0.2",
     "bootstrap": "^4.0.0",
     "fg-loadcss": "^2.0.1",
     "jquery": "^3.2.1",
