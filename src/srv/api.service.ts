@@ -15,7 +15,7 @@ class ApiService extends FetchService {
   }
 
   async getData (): Promise<void> {
-    if (env().server) return
+    if (env().server || !env().apiUrl) return
 
     DATA = await this.get('/allData')
   }
