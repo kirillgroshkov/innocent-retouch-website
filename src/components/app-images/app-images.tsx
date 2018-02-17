@@ -6,6 +6,7 @@ import {
   imagesPrefix,
   ImgData,
 } from '../../cnst/images'
+import { env } from '../../environment/environment'
 import { googleImageLayout } from '../../lib/googleImageLayout'
 import { doImageLayout } from '../../lib/imageLayout'
 
@@ -15,14 +16,12 @@ import { doImageLayout } from '../../lib/imageLayout'
 })
 export class AppImages {
   @Element() el: HTMLElement
-  @Prop({ context: 'isServer' })
-  private isServer: boolean
   @Prop() imgs: ImgData[]
   @Prop() maxHeight = 120
   @State() layoutImgs: ImgData[] = []
 
   componentDidLoad (): void {
-    if (this.isServer) return
+    if (env().server) return
     // alert('The component did load APP');
     // console.log('The component did load APP')
     this.update()
@@ -51,7 +50,7 @@ export class AppImages {
   }
 
   render () {
-    console.log('render! isServer=' + this.isServer)
+    console.log('render! isServer=' + env().server)
     const dpr = window.devicePixelRatio || 1
     // const dpr = 1
     // const qProfile = dpr >= 2 ? 'eco' : 'best'

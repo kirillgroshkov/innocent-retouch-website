@@ -6,12 +6,11 @@ ts-node -P scripts ./scripts/cloudinarySizes.ts
 
 require('dotenv').config()
 import * as P from 'bluebird'
-import * as fs from 'fs-extra'
-import { rootDir } from '../src/rootDir'
 import * as cloudinary from 'cloudinary'
-import * as util from 'util'
-import * as path from 'path'
+import * as fs from 'fs-extra'
 import * as klawSync from 'klaw-sync'
+import * as path from 'path'
+import * as util from 'util'
 
 cloudinary.config({
   cloud_name: 'kirill',

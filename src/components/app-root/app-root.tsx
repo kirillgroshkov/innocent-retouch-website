@@ -1,13 +1,33 @@
-import { Component } from '@stencil/core'
+import { Component, Prop, State } from '@stencil/core'
 import '@stencil/router'
+import { ImgData } from '../../cnst/images'
+import {
+  env,
+  extendEnvironment,
+  logEnvironment,
+  setEnv,
+} from '../../environment/environment'
+import { apiService, DATA } from '../../srv/api.service'
 
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.scss',
 })
 export class AppRoot {
-  componentWillLoad () {
+  @Prop({ context: 'isServer' })
+  private isServer: boolean
+  @State() loading = true
+
+  async componentWillLoad () {
+    if (this.isServer) {
+      setEnv('server')
+    }
+    logEnvironment()
     // alert('The component is about to be rendered');
+    await apiService.getData()
+
+    console.log(DATA)
+    this.loading = false
   }
 
   componentDidLoad () {
@@ -16,6 +36,8 @@ export class AppRoot {
   }
 
   render () {
+    if (this.loading) return <pre>loading...</pre>
+
     return (
       <div>
         <app-header />
