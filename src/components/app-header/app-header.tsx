@@ -1,5 +1,5 @@
 import { Component } from '@stencil/core'
-import { routes } from '../../cnst/routes'
+import { DATA } from '../../srv/api.service'
 
 @Component({
   tag: 'app-header',
@@ -7,6 +7,10 @@ import { routes } from '../../cnst/routes'
 })
 export class AppHeader {
   render () {
+    const menus = DATA.menus
+      .filter(m => m.pub)
+      .sort((a, b) => a.order > b.order)
+
     return (
       <div class="container">
         <div class="row">
@@ -23,14 +27,14 @@ export class AppHeader {
               </stencil-route-link>
 
               <div class="header__menu">
-                {routes.map(r => (
+                {menus.map(m => (
                   <stencil-route-link
                     class="header__menuItem"
                     activeClass="active"
-                    exact={r.exact}
-                    url={'/' + r.path}
+                    exact={true}
+                    url={m.page}
                   >
-                    {r.label}
+                    {m.label}
                   </stencil-route-link>
                 ))}
               </div>

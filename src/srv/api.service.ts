@@ -1,8 +1,8 @@
-import { D } from '../data/data'
+// import { D } from '../data/data'
 import { env } from '../environment/environment'
 import { FetchService } from './fetch.service'
 
-export let DATA: any = D
+export let DATA: any
 
 class ApiService extends FetchService {
   async fetch<T> (
@@ -15,9 +15,17 @@ class ApiService extends FetchService {
   }
 
   async getData (): Promise<void> {
-    if (env().server || !env().apiUrl) return
+    if (!env().apiUrl) return
 
-    DATA = await this.get('/allData')
+    try {
+      DATA = await this.get('/allData')
+    } catch (err) {
+      if (err && err.response && err.response.status === 401) {
+        location.href = `${env().loginUrl}?autoLogin=1&return=${location.href}`
+        return
+      }
+      throw err
+    }
   }
 }
 

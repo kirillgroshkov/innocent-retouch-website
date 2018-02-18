@@ -24,10 +24,14 @@ export class AppRoot {
     }
     logEnvironment()
     // alert('The component is about to be rendered');
-    await apiService.getData()
+    // async
+    const r = apiService.getData().then(() => {
+      console.log(DATA)
+      this.loading = false
+    })
 
-    console.log(DATA)
-    this.loading = false
+    // If SSR - wait for api result to come
+    if (env().server) await r
   }
 
   componentDidLoad () {
@@ -43,29 +47,16 @@ export class AppRoot {
         <app-header />
 
         <stencil-router>
-          <stencil-route
-            url="/"
-            component="home-page"
-            componentProps={{ segment: 'fashion-beauty' }}
-            exact={true}
-          />
-          <stencil-route
-            url="/still-life"
-            component="home-page"
-            componentProps={{ segment: 'still-life' }}
-            exact={false}
-          />
-          <stencil-route
-            url="/interior"
-            component="home-page"
-            componentProps={{ segment: 'interior' }}
-            exact={false}
-          />
-          <stencil-route
-            url="/contact"
-            component="contact-page"
-            exact={false}
-          />
+          {DATA.menus
+            .filter(m => m.pub)
+            .map(m => (
+              <stencil-route
+                url={m.page}
+                component={m.component}
+                componentProps={{ segment: m.segment }}
+                exact={true}
+              />
+            ))}
         </stencil-router>
 
         <app-footer />

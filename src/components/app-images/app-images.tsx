@@ -50,7 +50,7 @@ export class AppImages {
   }
 
   render () {
-    console.log('render! isServer=' + env().server)
+    // console.log('render! isServer=' + env().server)
     const dpr = window.devicePixelRatio || 1
     // const dpr = 1
     // const qProfile = dpr >= 2 ? 'eco' : 'best'

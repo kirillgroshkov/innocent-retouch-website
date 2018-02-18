@@ -4,8 +4,9 @@ export class EnvironmentProd {
   dev = false
   server = false
 
-  // apiUrl: string | undefined = 'https://kg-backend.now.sh/editor'
-  apiUrl: string | undefined = undefined
+  loginUrl = 'https://kg-backend.now.sh/login'
+  apiUrl: string | undefined = 'https://kg-backend.now.sh/editor'
+  // apiUrl: string | undefined = undefined
 }
 
 export type Environment = EnvironmentProd
