@@ -1,4 +1,4 @@
-import { ImgData } from '../cnst/images'
+import { ImgData } from '@src/cnst/images'
 
 function _getHeigth (
   images: ImgData[],

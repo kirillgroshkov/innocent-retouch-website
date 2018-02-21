@@ -9,11 +9,11 @@ curl 'https://api.cloudinary.com/v1_1/kirill/resources/image'
 require('dotenv').config()
 import * as P from 'bluebird'
 import * as fs from 'fs-extra'
-import { rootDir } from '../src/rootDir'
 import * as cloudinary from 'cloudinary'
 import * as util from 'util'
 import * as path from 'path'
 import * as klawSync from 'klaw-sync'
+import { rootDir } from '../src/cnst/paths.cnst'
 const imgDir = rootDir + '/src/static/img'
 
 const started = Date.now()

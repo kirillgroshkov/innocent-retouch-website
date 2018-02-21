@@ -1,6 +1,5 @@
+import { getImgData } from '@src/cnst/images'
 import { Component, Prop } from '@stencil/core'
-import { getImgData, images, imageSizes, imagesPrefix } from '../../cnst/images'
-import { googleImageLayout } from '../../lib/googleImageLayout'
 
 @Component({
   tag: 'home-page',

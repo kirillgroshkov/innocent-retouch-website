@@ -1,5 +1,5 @@
+import { routes } from '@src/cnst/routes'
 import { Component } from '@stencil/core'
-import { routes } from '../../cnst/routes'
 
 @Component({
   tag: 'app-header',
