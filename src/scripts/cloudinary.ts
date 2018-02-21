@@ -6,7 +6,6 @@ curl 'https://api.cloudinary.com/v1_1/kirill/resources/image'
 
  */
 
-require('dotenv').config()
 import * as P from 'bluebird'
 import * as cloudinary from 'cloudinary'
 import * as fs from 'fs-extra'
@@ -15,6 +14,7 @@ import * as path from 'path'
 import * as util from 'util'
 import { rootDir } from '../cnst/paths.cnst'
 const imgDir = rootDir + '/static/img'
+require('dotenv').config()
 
 const started = Date.now()
 

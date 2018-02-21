@@ -1,14 +1,7 @@
+import { imagesPrefix, ImgData } from '@src/cnst/images'
+import { env } from '@src/environment/environment'
+import { doImageLayout } from '@src/lib/imageLayout'
 import { Component, Element, Listen, Prop, State } from '@stencil/core'
-import {
-  getImgData,
-  images,
-  imageSizes,
-  imagesPrefix,
-  ImgData,
-} from '../../cnst/images'
-import { env } from '../../environment/environment'
-import { googleImageLayout } from '../../lib/googleImageLayout'
-import { doImageLayout } from '../../lib/imageLayout'
 
 @Component({
   tag: 'app-images',

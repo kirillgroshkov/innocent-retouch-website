@@ -6,7 +6,7 @@
 
 import {
   ImgData,
-} from './cnst/images';
+} from '@src/cnst/images';
 
 declare global {
   interface HTMLStencilElement extends HTMLElement {

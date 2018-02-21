@@ -16,7 +16,12 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "jsx": "react",
-    "jsxFactory": "h"
+    "jsxFactory": "h",
+    "baseUrl": "./",
+    "paths": {
+      "*": ["*"],
+      "@src/*": ["src/*"]
+    }
   },
   "include": [
     "src",

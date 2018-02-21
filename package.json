@@ -49,9 +49,10 @@
     "got": "^8.1.0",
     "husky": "^0.14.3",
     "klaw-sync": "^3.0.2",
-    "lint-staged": "^6.1.0",
+    "lint-staged": "^7.0.0",
     "prettier": "^1.8.2",
     "sharp": "^0.19.0",
+    "tsconfig-paths": "^3.1.1",
     "tslint": "^5.8.0",
     "typescript": "^2.6.0"
   },
