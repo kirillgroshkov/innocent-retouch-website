@@ -13,7 +13,6 @@ jobs:
       - checkout
       # env variables
       - run: echo 'export GIT_MSG=`git log -1 --pretty=%B`' >> $BASH_ENV
-      - run: greenkeeper-lockfile-update && greenkeeper-lockfile-upload
       - restore_cache:
           key: dependencies-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-v1-{{ checksum "yarn.lock" }}
       - run: yarn --pure-lockfile
@@ -21,16 +20,6 @@ jobs:
           paths:
             - node_modules
           key: dependencies-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-v1-{{ checksum "yarn.lock" }}
-
-      - run:
-          name: Prettier
-          command: |
-            [[ $CIRCLE_BRANCH = greenkeeper* ]] && exit 0
-            yarn prettier-all
-            git commit -a -m "prettier: $GIT_MSG" || true
-            ahead=`git rev-list HEAD --not --remotes | wc -l | awk '{print $1}'`
-            [ "$ahead" != "0" ] && git push --set-upstream origin $CIRCLE_BRANCH && echo "pushed, exiting" && exit 1
-            echo "nothing to push, proceeding"
 
       #- run: yarn jest-ci
       - run: yarn build
