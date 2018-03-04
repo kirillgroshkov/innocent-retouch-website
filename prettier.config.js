@@ -1,9 +1,1 @@
-module.exports = {
-  printWidth: 80,
-  tabWidth: 2,
-  useTabs: false,
-  semi: false,
-  singleQuote: true,
-  trailingComma: 'all',
-  bracketSpacing: true,
-}
+module.exports = require('@naturalcycles/shared-dev/prettier.config')
