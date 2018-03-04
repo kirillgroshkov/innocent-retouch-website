@@ -1,13 +1,13 @@
-import { Component, Prop, State } from '@stencil/core'
-import '@stencil/router'
-import { ImgData } from '../../cnst/images'
+import { ImgData } from '@src/cnst/images'
 import {
   env,
   extendEnvironment,
   logEnvironment,
   setEnv,
-} from '../../environment/environment'
-import { apiService, DATA } from '../../srv/api.service'
+} from '@src/environment/environment'
+import { apiService, DATA } from '@src/srv/api.service'
+import { Component, Prop, State } from '@stencil/core'
+import '@stencil/router'
 
 @Component({
   tag: 'app-root',
@@ -26,7 +26,7 @@ export class AppRoot {
     // alert('The component is about to be rendered');
     // async
     const r = apiService.getData().then(() => {
-      console.log(DATA)
+      console.log('DATA', DATA)
       this.loading = false
     })
 
@@ -42,21 +42,23 @@ export class AppRoot {
   render () {
     if (this.loading) return <pre>loading...</pre>
 
+    const pages = apiService.getPages()
+
+    // console.log(items)
+
     return (
       <div>
         <app-header />
 
         <stencil-router>
-          {DATA.menus
-            .filter(m => m.pub)
-            .map(m => (
-              <stencil-route
-                url={m.page}
-                component={m.component}
-                componentProps={{ segment: m.segment }}
-                exact={true}
-              />
-            ))}
+          {pages.map(p => (
+            <stencil-route
+              url={p.url}
+              component={p.component}
+              componentProps={{ segment: p.segment }}
+              exact={true}
+            />
+          ))}
         </stencil-router>
 
         <app-footer />

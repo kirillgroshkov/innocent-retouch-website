@@ -4,6 +4,12 @@ import { FetchService } from './fetch.service'
 
 export let DATA: any
 
+export interface MenuItem {
+  url: string
+  pub: boolean
+  label: string
+}
+
 class ApiService extends FetchService {
   async fetch<T> (
     method: string,
@@ -26,6 +32,17 @@ class ApiService extends FetchService {
       }
       throw err
     }
+  }
+
+  getTopMenuItems (): MenuItem[] {
+    const topMenu = DATA.menus.find(m => m.id === 'top')
+    const items = (topMenu ? topMenu.items : []).filter(m => m.pub)
+
+    return items
+  }
+
+  getPages (): any[] {
+    return DATA.pages
   }
 }
 

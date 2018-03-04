@@ -1,5 +1,5 @@
 import { routes } from '@src/cnst/routes'
-import { DATA } from '@src/srv/api.service'
+import { apiService, DATA } from '@src/srv/api.service'
 import { Component } from '@stencil/core'
 
 @Component({
@@ -8,9 +8,7 @@ import { Component } from '@stencil/core'
 })
 export class AppHeader {
   render () {
-    const menus = DATA.menus
-      .filter(m => m.pub)
-      .sort((a, b) => a.order > b.order)
+    const menus = apiService.getTopMenuItems()
 
     return (
       <div class="container">
@@ -33,7 +31,7 @@ export class AppHeader {
                     class="header__menuItem"
                     activeClass="active"
                     exact={true}
-                    url={m.page}
+                    url={m.url}
                   >
                     {m.label}
                   </stencil-route-link>
