@@ -58,17 +58,11 @@ export class AppImages {
     })
 
     return (
-      <div class="images">
+      <div class='images'>
         {this.layoutImgs.map(i => (
-          <a
-            href={`${imagesPrefix}/q_auto:best/${i.imgPart}`}
-            target="_blank"
-            rel="noopener"
-          >
+          <a href={`${imagesPrefix}/q_auto:best/${i.imgPart}`} target='_blank' rel='noopener'>
             <img
-              src={`${imagesPrefix}/w_${
-                i.wbr
-              },c_fit,f_auto,q_auto:${qProfile}/${i.imgPart}`}
+              src={`${imagesPrefix}/w_${i.wbr},c_fit,f_auto,q_auto:${qProfile}/${i.imgPart}`}
               style={{ width: `${i.w}px`, height: `${i.h}px` }}
               alt={i.alt}
             />

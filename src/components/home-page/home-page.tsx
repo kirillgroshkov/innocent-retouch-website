@@ -12,9 +12,9 @@ export class MyName {
     const imgs = getImgData(this.segment)
 
     return (
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col">
+      <div class='container-fluid'>
+        <div class='row'>
+          <div class='col'>
             <app-images imgs={imgs} maxHeight={800} />
           </div>
         </div>

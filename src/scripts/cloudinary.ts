@@ -1,3 +1,4 @@
+/* tslint:disable:variable-name */
 /*
 
 ts-node -P scripts ./scripts/cloudinary.ts

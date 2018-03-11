@@ -1,10 +1,5 @@
 import { ImgData } from '@src/cnst/images'
-import {
-  env,
-  extendEnvironment,
-  logEnvironment,
-  setEnv,
-} from '@src/environment/environment'
+import { env, extendEnvironment, logEnvironment, setEnv } from '@src/environment/environment'
 import { apiService, DATA } from '@src/srv/api.service'
 import { Component, Prop, State } from '@stencil/core'
 import '@stencil/router'
@@ -52,12 +47,7 @@ export class AppRoot {
 
         <stencil-router>
           {pages.map(p => (
-            <stencil-route
-              url={p.url}
-              component={p.component}
-              componentProps={{ segment: p.segment }}
-              exact={true}
-            />
+            <stencil-route url={p.url} component={p.component} componentProps={{ segment: p.segment }} exact={true} />
           ))}
         </stencil-router>
 

@@ -8,9 +8,9 @@ import { DATA } from '../../srv/api.service'
 export class ContactPage {
   render () {
     return (
-      <div class="container">
-        <div class="row">
-          <div class="col">Contact page</div>
+      <div class='container'>
+        <div class='row'>
+          <div class='col'>Contact page</div>
 
           {DATA.menus.map(m => <p>{m.label}</p>)}
         </div>

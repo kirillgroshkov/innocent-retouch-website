@@ -1,9 +1,5 @@
 export class FetchService {
-  async fetch<T> (
-    method: string,
-    url: string,
-    _opt: RequestInit = {},
-  ): Promise<T> {
+  async fetch<T> (method: string, url: string, _opt: RequestInit = {}): Promise<T> {
     // avoid mutation
     const opt = {
       method,

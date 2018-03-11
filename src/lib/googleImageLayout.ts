@@ -28,9 +28,7 @@ class GoogleImageLayout {
 
     for (let i = 0; i < images.length; i++) {
       img = images[i]
-      r +=
-        parseInt(img.getAttribute('data-width')) /
-        parseInt(img.getAttribute('data-height'))
+      r += parseInt(img.getAttribute('data-width')) / parseInt(img.getAttribute('data-height'))
     }
 
     return width / r // have to round down because Firefox will automatically roundup value with number of decimals > 3
@@ -43,10 +41,7 @@ class GoogleImageLayout {
     for (let i = 0; i < images.length; i++) {
       const img = images[i]
       img.style.width =
-        height *
-          parseInt(img.getAttribute('data-width')) /
-          parseInt(img.getAttribute('data-height')) +
-        'px'
+        height * parseInt(img.getAttribute('data-width')) / parseInt(img.getAttribute('data-height')) + 'px'
       img.style.height = height + 'px'
       img.style.marginRight = this.margin + 'px' // -4 is the negative margin of the inline element
       img.style.marginBottom = this.margin + 'px'

@@ -7,10 +7,10 @@ import { Component } from '@stencil/core'
 export class AppFooter {
   render () {
     return (
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col">
-            <div class="footer" />
+      <div class='container-fluid'>
+        <div class='row'>
+          <div class='col'>
+            <div class='footer' />
           </div>
         </div>
       </div>

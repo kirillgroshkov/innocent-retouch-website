@@ -11,11 +11,7 @@ export interface MenuItem {
 }
 
 class ApiService extends FetchService {
-  async fetch<T> (
-    method: string,
-    _url: string,
-    _opt: RequestInit = {},
-  ): Promise<T> {
+  async fetch<T> (method: string, _url: string, _opt: RequestInit = {}): Promise<T> {
     const url = `${env().apiUrl}/innocent${_url}`
     return super.fetch<T>(method, url, _opt)
   }
