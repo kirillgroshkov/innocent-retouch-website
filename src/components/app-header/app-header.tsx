@@ -1,15 +1,21 @@
 import { routes } from '@src/cnst/routes'
-import { apiService, DATA } from '@src/srv/api.service'
-import { Component } from '@stencil/core'
+import { apiService, MenuItem } from '@src/srv/api.service'
+import { Component, State } from '@stencil/core'
 
 @Component({
   tag: 'app-header',
   styleUrl: 'app-header.scss',
 })
 export class AppHeader {
-  render () {
-    const menus = apiService.getTopMenuItems()
+  @State() menus: MenuItem[] = []
 
+  componentWillLoad () {
+    apiService.data$.subscribe(data => {
+      this.menus = [...this.getTopMenuItems(data)]
+    })
+  }
+
+  render () {
     return (
       <div class='container'>
         <div class='row'>
@@ -21,7 +27,7 @@ export class AppHeader {
               </stencil-route-link>
 
               <div class='header__menu'>
-                {menus.map(m => (
+                {this.menus.map(m => (
                   <stencil-route-link class='header__menuItem' activeClass='active' exact={true} url={m.url}>
                     {m.label}
                   </stencil-route-link>
@@ -32,5 +38,12 @@ export class AppHeader {
         </div>
       </div>
     )
+  }
+
+  private getTopMenuItems (data): MenuItem[] {
+    const topMenu = data.menus.find(m => m.id === 'top')
+    const items = (topMenu ? topMenu.items : []).filter(m => m.pub)
+
+    return items
   }
 }

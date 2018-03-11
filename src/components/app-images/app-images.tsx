@@ -1,7 +1,7 @@
 import { imagesPrefix, ImgData } from '@src/cnst/images'
 import { env } from '@src/environment/environment'
 import { doImageLayout } from '@src/lib/imageLayout'
-import { Component, Element, Listen, Prop, State } from '@stencil/core'
+import { Component, Element, Listen, Prop, State, Watch } from '@stencil/core'
 
 @Component({
   tag: 'app-images',
@@ -22,6 +22,11 @@ export class AppImages {
 
   breakpoint (m: number, threshold = 50): number {
     return Math.round(m / 50) * 50
+  }
+
+  @Watch('imgs')
+  imgsWatch (v: any) {
+    this.update()
   }
 
   @Listen('window:resize')

@@ -1,6 +1,6 @@
 import { images, imagesAlt, imageSizes, imagesPrefix, ImgData } from '@src/cnst/images'
 import { apiService } from '@src/srv/api.service'
-import { Component, Prop } from '@stencil/core'
+import { Component, Prop, State } from '@stencil/core'
 
 @Component({
   tag: 'home-page',
@@ -8,35 +8,42 @@ import { Component, Prop } from '@stencil/core'
 })
 export class HomePage {
   @Prop() segment = ''
+  @State() imgs: ImgData[] = []
+
+  componentWillLoad () {
+    apiService.data$.subscribe(data => {
+      this.imgs = [...this.getImgData(data, this.segment)]
+      // console.log('home data$ imgs', this.imgs)
+    })
+  }
 
   render () {
-    const imgs = getImgData(this.segment)
-
+    // console.log('home render', this.imgs)
     return (
       <div class='container-fluid'>
         <div class='row'>
           <div class='col'>
-            <app-images imgs={imgs} maxHeight={800} />
+            <app-images imgs={this.imgs} maxHeight={800} />
           </div>
         </div>
       </div>
     )
   }
-}
 
-function getImgData (segment: string): ImgData[] {
-  const ig = apiService.getImageGroup(segment)
-  if (!ig) return []
+  private getImgData (data: any, segment: string): ImgData[] {
+    const ig = data.imageGroups.find(i => i.id === segment)
+    if (!ig) return []
 
-  return ig.images.map(i => {
-    const wh = i.res.split('x')
-    return {
-      imgPart: `${i.filename}`,
-      full: `${imagesPrefix}/q_auto:best/${i.filename}`,
-      small: `${imagesPrefix}/w_2800,h_1600,c_fit,q_auto:best/${i.filename}`, // :best
-      fullw: wh[0],
-      fullh: wh[1],
-      alt: i.alt || '',
-    }
-  })
+    return ig.images.map(i => {
+      const wh = i.res.split('x')
+      return {
+        imgPart: `${i.filename}`,
+        full: `${imagesPrefix}/q_auto:best/${i.filename}`,
+        small: `${imagesPrefix}/w_2800,h_1600,c_fit,q_auto:best/${i.filename}`, // :best
+        fullw: wh[0],
+        fullh: wh[1],
+        alt: i.alt || '',
+      }
+    })
+  }
 }

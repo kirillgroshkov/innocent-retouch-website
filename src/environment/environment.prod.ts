@@ -7,6 +7,7 @@ export class EnvironmentProd {
   loginUrl = 'https://kg-backend.now.sh/login'
   apiUrl: string | undefined = 'https://kg-backend.now.sh/editor'
   // apiUrl: string | undefined = undefined
+  ioUrl = 'https://kg-backend.now.sh'
 }
 
 export type Environment = EnvironmentProd

@@ -1,6 +1,7 @@
 import { ImgData } from '@src/cnst/images'
 import { env, extendEnvironment, logEnvironment, setEnv } from '@src/environment/environment'
-import { apiService, DATA } from '@src/srv/api.service'
+import { apiService } from '@src/srv/api.service'
+import { ioService } from '@src/srv/io.service'
 import { Component, Prop, State } from '@stencil/core'
 import '@stencil/router'
 
@@ -12,21 +13,29 @@ export class AppRoot {
   @Prop({ context: 'isServer' })
   private isServer: boolean
   @State() loading = true
+  @State() pages: any[] = []
 
   async componentWillLoad () {
     if (this.isServer) {
       setEnv('server')
     }
     logEnvironment()
+
+    apiService.data$.subscribe(data => {
+      this.pages = [...data.pages]
+    })
+
+    apiService.init() // async
+
     // alert('The component is about to be rendered');
     // async
-    const r = apiService.getData().then(() => {
-      console.log('DATA', DATA)
+    const getDataPromise = apiService.getData().then(() => {
+      // console.log('DATA', DATA)
       this.loading = false
     })
 
     // If SSR - wait for api result to come
-    if (env().server) await r
+    if (env().server) await getDataPromise
   }
 
   componentDidLoad () {
@@ -37,8 +46,6 @@ export class AppRoot {
   render () {
     if (this.loading) return <pre>loading...</pre>
 
-    const pages = apiService.getPages()
-
     // console.log(items)
 
     return (
@@ -46,7 +53,7 @@ export class AppRoot {
         <app-header />
 
         <stencil-router>
-          {pages.map(p => (
+          {this.pages.map(p => (
             <stencil-route url={p.url} component={p.component} componentProps={{ segment: p.segment }} exact={true} />
           ))}
         </stencil-router>
