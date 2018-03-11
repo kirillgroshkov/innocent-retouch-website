@@ -1,7 +1,5 @@
 import { ioService } from '@src/srv/io.service'
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
-import { Subject } from 'rxjs/Subject'
-// import { D } from '../data/data'
 import { env } from '../environment/environment'
 import { FetchService } from './fetch.service'
 
@@ -13,7 +11,9 @@ export interface MenuItem {
 
 interface DataUpdatedEvent {
   collection: string
-  data: any
+  // data: any
+  id: string
+  value: any
 }
 
 class ApiService extends FetchService {
@@ -34,9 +34,26 @@ class ApiService extends FetchService {
     await ioService.connect()
     ioService.socket.on('dataUpdated', (e: DataUpdatedEvent) => {
       console.log('io: dataUpdated', e)
+
+      const updatedCollection: any[] = [...this.DATA[e.collection]]
+      const index = this.DATA[e.collection].findIndex(i => i.id === e.id)
+      if (index !== undefined) {
+        // replace
+        if (e.value === undefined) {
+          // delete
+          updatedCollection.splice(index)
+        } else {
+          // update
+          updatedCollection[index] = e.value
+        }
+      } else {
+        // new item
+        updatedCollection.push(e.value)
+      }
+
       this.data$.next({
         ...this.DATA,
-        [e.collection]: e.data,
+        [e.collection]: updatedCollection,
       })
     })
   }
