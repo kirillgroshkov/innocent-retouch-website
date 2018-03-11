@@ -34,7 +34,7 @@ async function doWork () {
         alt: imagesAlt[filename],
       }
 
-      i.filename = i.filename.substr(i.filename.indexOf('/') + 1)
+      // i.filename = i.filename.substr(i.filename.indexOf('/') + 1)
 
       r[group].push(i)
     })

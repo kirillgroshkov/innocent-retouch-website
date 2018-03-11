@@ -31,7 +31,7 @@ function getImgData (segment: string): ImgData[] {
   return ig.images.map(i => {
     const wh = i.res.split('x')
     return {
-      imgPart: `${segment}/${i.filename}`,
+      imgPart: `${i.filename}`,
       full: `${imagesPrefix}/q_auto:best/${i.filename}`,
       small: `${imagesPrefix}/w_2800,h_1600,c_fit,q_auto:best/${i.filename}`, // :best
       fullw: wh[0],
