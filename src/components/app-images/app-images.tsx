@@ -54,23 +54,32 @@ export class AppImages {
     // const qProfile = dpr >= 2 ? 'eco' : 'best'
     const qProfile = 'best'
 
-    this.layoutImgs.forEach(img => {
+    /*this.layoutImgs.forEach(img => {
       Object.assign(img, {
         // wbr: this.breakpoint(img.w * dpr),
         wbr: img.w * dpr,
         // hbr: this.breakpoint(img.h * dpr),
       })
+    })*/
+
+    const images = this.layoutImgs.map(i => {
+      return {
+        href: `${imagesPrefix}/q_auto:best/${i.imgPart}`,
+        src: `${imagesPrefix}/w_${i.w * dpr},c_fit,f_auto,q_auto:${qProfile}/${i.imgPart}`,
+        style: {
+          width: `${i.w}px`,
+          height: `${i.h}px`,
+          // display: 'inline-block',
+        },
+        alt: i.alt,
+      }
     })
 
     return (
       <div class='images'>
-        {this.layoutImgs.map(i => (
-          <a href={`${imagesPrefix}/q_auto:best/${i.imgPart}`} target='_blank' rel='noopener'>
-            <img
-              src={`${imagesPrefix}/w_${i.wbr},c_fit,f_auto,q_auto:${qProfile}/${i.imgPart}`}
-              style={{ width: `${i.w}px`, height: `${i.h}px` }}
-              alt={i.alt}
-            />
+        {images.map(i => (
+          <a href={i.href} target='_blank' rel='noopener'>
+            <lazy-img src={i.src} alt={i.alt} style={i.style} />
           </a>
         ))}
       </div>
