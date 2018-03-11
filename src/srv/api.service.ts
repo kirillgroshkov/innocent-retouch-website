@@ -40,6 +40,10 @@ class ApiService extends FetchService {
   getPages (): any[] {
     return DATA.pages
   }
+
+  getImageGroup (id: string): any {
+    return DATA.imageGroups.find(i => i.id === id)
+  }
 }
 
 export const apiService = new ApiService()

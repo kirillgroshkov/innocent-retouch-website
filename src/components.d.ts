@@ -169,7 +169,7 @@ declare global {
 
 
 import {
-  MyName as HomePage
+  HomePage as HomePage
 } from './components/home-page/home-page';
 
 declare global {
