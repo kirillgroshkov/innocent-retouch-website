@@ -40,19 +40,19 @@
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
 
-"@stencil/core@0.6.5":
-  version "0.6.5"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-0.6.5.tgz#8fa18c21de5719842f05c22888d6daa32047799b"
+"@stencil/core@^0.6.18":
+  version "0.6.18"
+  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-0.6.18.tgz#4a8f619fbb994c43e4eb5e19cec43db6e111b3b6"
   dependencies:
     chokidar "2.0.1"
     jsdom "11.5.1"
-    rollup "0.55.5"
+    rollup "0.56.3"
     rollup-plugin-commonjs "8.3.0"
     rollup-plugin-node-builtins "2.1.2"
     rollup-plugin-node-globals "1.1.0"
     rollup-plugin-node-resolve "3.0.3"
     rollup-pluginutils "^2.0.1"
-    typescript "^2.7.1"
+    typescript "^2.7.2"
     uglify-es "3.3.9"
     workbox-build "3.0.0-alpha.6"
 
@@ -4005,9 +4005,9 @@ rollup-pluginutils@^2.0.1:
     estree-walker "^0.3.0"
     micromatch "^2.3.11"
 
-rollup@0.55.5:
-  version "0.55.5"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.55.5.tgz#2f88c300f7cf24b5ec2dca8a6aba73b04e087e93"
+rollup@0.56.3:
+  version "0.56.3"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.56.3.tgz#7900695531afa1badd3235f285cc4aa0d49ce254"
 
 rxjs@^5.4.2:
   version "5.5.6"
@@ -4611,7 +4611,7 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@^2.6.0, typescript@^2.7.1:
+typescript@^2.6.0, typescript@^2.7.2:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.7.2.tgz#2d615a1ef4aee4f574425cdff7026edf81919836"
 
