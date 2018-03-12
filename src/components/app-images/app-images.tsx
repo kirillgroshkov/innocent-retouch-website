@@ -1,7 +1,20 @@
-import { imagesPrefix, ImgData } from '@src/cnst/images'
+import { imagesPrefix } from '@src/cnst/images'
 import { env } from '@src/environment/environment'
 import { doImageLayout } from '@src/lib/imageLayout'
 import { Component, Element, Listen, Prop, State, Watch } from '@stencil/core'
+
+export interface ImgData {
+  full: string
+  small: string
+  imgPart: string
+  w?: number
+  h?: number
+  wbr?: number
+  hbr?: number
+  fullw: number
+  fullh: number
+  alt: string
+}
 
 @Component({
   tag: 'app-images',
@@ -25,12 +38,14 @@ export class AppImages {
   }
 
   @Watch('imgs')
-  imgsWatch (v: any) {
+  imgsWatch () {
     this.update()
   }
 
   @Listen('window:resize')
   update (): void {
+    if (env().server) return
+    // console.log('update!', this.imgs.length)
     // console.log(window.devicePixelRatio)
     // console.log('resized')
     // if (!this.el) return

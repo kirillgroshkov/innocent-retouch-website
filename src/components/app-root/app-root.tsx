@@ -1,8 +1,9 @@
-import { ImgData } from '@src/cnst/images'
 import { env, extendEnvironment, logEnvironment, setEnv } from '@src/environment/environment'
+import { adminService } from '@src/srv/admin.service'
 import { apiService } from '@src/srv/api.service'
 import { ioService } from '@src/srv/io.service'
-import { Component, Prop, State } from '@stencil/core'
+import { Page, storeService } from '@src/srv/store.service'
+import { Component, Listen, Prop, State } from '@stencil/core'
 import '@stencil/router'
 
 @Component({
@@ -12,8 +13,7 @@ import '@stencil/router'
 export class AppRoot {
   @Prop({ context: 'isServer' })
   private isServer: boolean
-  @State() loading = true
-  @State() pages: any[] = []
+  @State() pages: Page[] = []
 
   async componentWillLoad () {
     if (this.isServer) {
@@ -21,33 +21,21 @@ export class AppRoot {
     }
     logEnvironment()
 
-    apiService.data$.subscribe(data => {
+    storeService.init()
+
+    adminService.init()
+
+    storeService.data$.subscribe(data => {
       this.pages = [...data.pages]
     })
-
-    apiService.init() // async
-
-    // alert('The component is about to be rendered');
-    // async
-    const getDataPromise = apiService.getData().then(() => {
-      // console.log('DATA', DATA)
-      this.loading = false
-    })
-
-    // If SSR - wait for api result to come
-    if (env().server) await getDataPromise
   }
 
-  componentDidLoad () {
-    // alert('The component did load');
-    // googleImageLayout()
+  @Listen('window:keypress')
+  onKeyPress (e: KeyboardEvent): void {
+    adminService.onKeyPress(e)
   }
 
   render () {
-    if (this.loading) return <pre>loading...</pre>
-
-    // console.log(items)
-
     return (
       <div>
         <app-header />
@@ -59,6 +47,7 @@ export class AppRoot {
         </stencil-router>
 
         <app-footer />
+        <red-dot />
       </div>
     )
   }

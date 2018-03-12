@@ -22,7 +22,7 @@ import '@stencil/router';
 
 import {
   ImgData,
-} from '@src/cnst/images';
+} from './components/app-images/app-images';
 
 import {
   AppFooter as AppFooter
@@ -231,6 +231,36 @@ declare global {
     export interface LazyImgAttributes extends HTMLAttributes {
       alt?: string;
       src?: string;
+    }
+  }
+}
+
+
+import {
+  RedDot as RedDot
+} from './components/red-dot/red-dot';
+
+declare global {
+  interface HTMLRedDotElement extends RedDot, HTMLStencilElement {
+  }
+  var HTMLRedDotElement: {
+    prototype: HTMLRedDotElement;
+    new (): HTMLRedDotElement;
+  };
+  interface HTMLElementTagNameMap {
+    "red-dot": HTMLRedDotElement;
+  }
+  interface ElementTagNameMap {
+    "red-dot": HTMLRedDotElement;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      "red-dot": JSXElements.RedDotAttributes;
+    }
+  }
+  namespace JSXElements {
+    export interface RedDotAttributes extends HTMLAttributes {
+      
     }
   }
 }

@@ -1,6 +1,6 @@
 /*
 
-ts-node -P src/scripts src/scripts/saveData.ts
+ts-node -P src/scripts/tsconfig.json -r tsconfig-paths/register src/scripts/saveData.ts
 
 */
 

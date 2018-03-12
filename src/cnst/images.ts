@@ -1,16 +1,3 @@
-export interface ImgData {
-  full: string
-  small: string
-  imgPart: string
-  w?: number
-  h?: number
-  wbr?: number
-  hbr?: number
-  fullw: number
-  fullh: number
-  alt: string
-}
-
 export const images = {
   'fashion-beauty': [
     'fashion_beauty/dv_moshizi_1.jpg', // Henry Moshizi, Damernas Värld

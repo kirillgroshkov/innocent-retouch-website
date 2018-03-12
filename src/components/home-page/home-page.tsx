@@ -1,5 +1,6 @@
-import { images, imagesAlt, imageSizes, imagesPrefix, ImgData } from '@src/cnst/images'
-import { apiService } from '@src/srv/api.service'
+import { imagesPrefix } from '@src/cnst/images'
+import { ImgData } from '@src/components/app-images/app-images'
+import { storeService } from '@src/srv/store.service'
 import { Component, Prop, State } from '@stencil/core'
 
 @Component({
@@ -11,7 +12,7 @@ export class HomePage {
   @State() imgs: ImgData[] = []
 
   componentWillLoad () {
-    apiService.data$.subscribe(data => {
+    storeService.data$.subscribe(data => {
       this.imgs = [...this.getImgData(data, this.segment)]
       // console.log('home data$ imgs', this.imgs)
     })

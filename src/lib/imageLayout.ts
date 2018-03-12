@@ -1,4 +1,4 @@
-import { ImgData } from '@src/cnst/images'
+import { ImgData } from '@src/components/app-images/app-images'
 
 function _getHeigth (images: ImgData[], containerWidth: number, margin: number): number {
   const width = containerWidth - images.length * margin

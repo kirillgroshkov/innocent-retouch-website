@@ -1,5 +1,5 @@
 import { routes } from '@src/cnst/routes'
-import { apiService, MenuItem } from '@src/srv/api.service'
+import { Data, MenuItem, storeService } from '@src/srv/store.service'
 import { Component, State } from '@stencil/core'
 
 @Component({
@@ -10,7 +10,7 @@ export class AppHeader {
   @State() menus: MenuItem[] = []
 
   componentWillLoad () {
-    apiService.data$.subscribe(data => {
+    storeService.data$.subscribe(data => {
       this.menus = [...this.getTopMenuItems(data)]
     })
   }
@@ -40,10 +40,9 @@ export class AppHeader {
     )
   }
 
-  private getTopMenuItems (data): MenuItem[] {
+  private getTopMenuItems (data: Data): MenuItem[] {
     const topMenu = data.menus.find(m => m.id === 'top')
-    const items = (topMenu ? topMenu.items : []).filter(m => m.pub)
-
-    return items
+    if (!topMenu || !topMenu.items) return []
+    return topMenu.items.filter(m => m.pub)
   }
 }

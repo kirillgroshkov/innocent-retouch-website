@@ -22,4 +22,5 @@ jobs:
           key: dependencies-{{ .Environment.CIRCLE_PROJECT_REPONAME }}-v1-{{ checksum "yarn.lock" }}
 
       #- run: yarn jest-ci
+      #- run: yarn save-data
       - run: yarn build

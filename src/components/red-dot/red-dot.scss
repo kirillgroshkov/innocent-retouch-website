@@ -1,0 +1,11 @@
+.red-dot {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  opacity: 0.5;
+  z-index: 99999;
+  cursor: pointer;
+}

@@ -5,14 +5,14 @@
   "description": "",
   "scripts": {
     "precommit": "lint-staged",
-    "build": "stencil build",
+    "build": "stencil build --prerender",
     "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
     "serve": "stencil-dev-server",
-    "start": "npm run dev",
     "clean-www": "rm -rf ./www",
     "tslint-all": "tslint './src/**/*.{ts,tsx}' -e './src/components.d.ts' -t stylish --fix",
     "prettier-do": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss,graphql,json}'",
-    "prettier-all": "yarn prettier-do && yarn tslint-all"
+    "prettier-all": "yarn prettier-do && yarn tslint-all",
+    "save-data": "ts-node -P src/scripts/tsconfig.json -r tsconfig-paths/register src/scripts/saveData.ts"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
@@ -30,9 +30,7 @@
     "@stencil/router": "^0.0.27",
     "@stencil/sass": "^0.0.3",
     "bootstrap": "^4.0.0",
-    "jquery": "^3.2.1",
     "kg-shared": "^1.0.2",
-    "popper.js": "1.12.9",
     "rxjs": "^5.5.6"
   },
   "devDependencies": {
@@ -45,7 +43,9 @@
     "@types/socket.io-client": "^1.4.32",
     "cloudinary": "^1.9.1",
     "got": "^8.1.0",
+    "jquery": "^3.2.1",
     "klaw-sync": "^3.0.2",
+    "popper.js": "1.12.9",
     "sharp": "^0.19.0",
     "typescript": "^2.6.0"
   },
