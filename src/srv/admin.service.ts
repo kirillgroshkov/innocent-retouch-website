@@ -41,15 +41,17 @@ class AdminService {
       storeService.data$.next(JSON.parse(lsData))
     }
 
-    const data = await apiService.get<Data>('/allData')
-    storeService.data$.next(data)
-
     this.dataSubscription = storeService.data$.subscribe(data => {
       console.log('data$ updated', data)
       storageUtil.setItem('data', JSON.stringify(data))
     })
 
+    const data = await apiService.get<Data>('/allData')
+    if (!storeService.admin$.getValue()) return
+    storeService.data$.next(data)
+
     await ioService.connect()
+    if (!storeService.admin$.getValue()) return
     ioService.socket.on('dataUpdated', e => this.onDataUpdated(e))
   }
 
