@@ -1,18 +1,18 @@
 /*
 
-ts-node -P scripts ./scripts/cloudinary.ts
+yarn tsn ./scripts/cloudinary.ts
 
 curl 'https://api.cloudinary.com/v1_1/kirill/resources/image'
 
  */
 
-require('dotenv').config()
-import * as P from 'bluebird'
-import * as fs from 'fs-extra'
-import * as cloudinary from 'cloudinary'
-import * as util from 'util'
-import * as path from 'path'
+// tslint:disable:variable-name
+
+import { pMap } from '@naturalcycles/js-lib'
+const cloudinary = require('cloudinary')
 import * as klawSync from 'klaw-sync'
+import * as path from 'path'
+import * as util from 'util'
 import { rootDir } from '../src/cnst/paths.cnst'
 const imgDir = rootDir + '/src/static/img'
 
@@ -32,33 +32,33 @@ const concurrency = 1
 
 list({
   max_results: 500,
-}).then(r => {
-  const images = r.resources.map(_r => _r.secure_url)
+}).then((r: any) => {
+  const images = r.resources.map((_r: any) => _r.secure_url)
   console.log(images)
 })
 
-async function doUpload() {
-  let files = klawSync(imgDir, {
+async function _doUpload() {
+  const files = klawSync(imgDir, {
     nodir: true,
   })
     .map(i => i.path)
     .filter(f => !path.parse(f).name.startsWith('.'))
 
-  await P.map(files, async f => {
+  await pMap(files, async f => {
     const p = path.parse(f)
     // console.log(f, path.parse(f))
     const dir = p.dir.substring(imgDir.length + 1)
     const public_id = `${dir}/${p.name}`
     // console.log(public_id)
 
-    const r = await upload(f, {
+    const _r = await upload(f, {
       public_id,
       unique_filename: false,
     })
     console.log(`<< ${public_id}`)
-  }).then(r => {
-    // console.log(r)
-    const sec = Math.round((Date.now() - started) / 1000)
-    console.log(`done in ${sec} sec using ${concurrency} concurrency`)
   })
+
+  // console.log(r)
+  const sec = Math.round((Date.now() - started) / 1000)
+  console.log(`done in ${sec} sec using ${concurrency} concurrency`)
 }

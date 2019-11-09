@@ -1,12 +1,12 @@
 import { routes } from '@src/cnst/routes'
-import { Component } from '@stencil/core'
+import { Component, h } from '@stencil/core'
 
 @Component({
   tag: 'app-header',
   styleUrl: 'app-header.scss',
 })
 export class AppHeader {
-  render () {
+  render() {
     return (
       <div class="container">
         <div class="row">

@@ -1,5 +1,5 @@
 import { getImgData } from '@src/cnst/images'
-import { Component, Prop } from '@stencil/core'
+import { Component, h, Prop } from '@stencil/core'
 
 @Component({
   tag: 'home-page',
@@ -8,7 +8,7 @@ import { Component, Prop } from '@stencil/core'
 export class MyName {
   @Prop() segment = 'fashion-beauty'
 
-  render () {
+  render() {
     const imgs = getImgData(this.segment)
 
     return (

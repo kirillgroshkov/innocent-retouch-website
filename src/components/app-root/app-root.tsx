@@ -1,4 +1,4 @@
-import { Component } from '@stencil/core'
+import { Component, h } from '@stencil/core'
 import '@stencil/router'
 
 @Component({
@@ -6,16 +6,16 @@ import '@stencil/router'
   styleUrl: 'app-root.scss',
 })
 export class AppRoot {
-  componentWillLoad () {
+  componentWillLoad() {
     // alert('The component is about to be rendered');
   }
 
-  componentDidLoad () {
+  componentDidLoad() {
     // alert('The component did load');
     // googleImageLayout()
   }
 
-  render () {
+  render() {
     return (
       <div>
         <app-header />
@@ -39,11 +39,7 @@ export class AppRoot {
             componentProps={{ segment: 'interior' }}
             exact={false}
           />
-          <stencil-route
-            url="/contact"
-            component="contact-page"
-            exact={false}
-          />
+          <stencil-route url="/contact" component="contact-page" exact={false} />
         </stencil-router>
 
         <app-footer />

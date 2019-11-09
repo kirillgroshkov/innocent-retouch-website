@@ -1,11 +1,11 @@
-import { Component } from '@stencil/core'
+import { Component, h } from '@stencil/core'
 
 @Component({
   tag: 'contact-page',
   // styleUrl: 'my-name.scss',
 })
 export class ContactPage {
-  render () {
+  render() {
     return (
       <div class="container">
         <div class="row">

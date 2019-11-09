@@ -1,13 +1,6 @@
-import {
-  getImgData,
-  images,
-  imageSizes,
-  imagesPrefix,
-  ImgData,
-} from '@src/cnst/images'
-import { googleImageLayout } from '@src/lib/googleImageLayout'
+import { imagesPrefix, ImgData } from '@src/cnst/images'
 import { doImageLayout } from '@src/lib/imageLayout'
-import { Component, Element, Listen, Prop, State } from '@stencil/core'
+import { Component, Element, h, Listen, Prop, State } from '@stencil/core'
 
 @Component({
   tag: 'app-images',
@@ -21,19 +14,19 @@ export class AppImages {
   @Prop() maxHeight = 120
   @State() layoutImgs: ImgData[] = []
 
-  componentDidLoad (): void {
+  componentDidLoad(): void {
     if (this.isServer) return
     // alert('The component did load APP');
     // console.log('The component did load APP')
     this.update()
   }
 
-  breakpoint (m: number, threshold = 50): number {
+  breakpoint(m: number, threshold = 50): number {
     return Math.round(m / 50) * 50
   }
 
-  @Listen('window:resize')
-  update (): void {
+  @Listen('resize', { target: 'window' })
+  update(): void {
     // console.log(window.devicePixelRatio)
     // console.log('resized')
     // if (!this.el) return
@@ -50,7 +43,7 @@ export class AppImages {
     // this.layoutImgs = [...this.layoutImgs] // force update
   }
 
-  render () {
+  render() {
     console.log('render! isServer=' + this.isServer)
     const dpr = window.devicePixelRatio || 1
     // const dpr = 1
@@ -68,17 +61,12 @@ export class AppImages {
     return (
       <div class="images">
         {this.layoutImgs.map(i => (
-          <a
-            href={`${imagesPrefix}/q_auto:best/${i.imgPart}`}
-            target="_blank"
-            rel="noopener"
-          >
+          <a href={`${imagesPrefix}/q_auto:best/${i.imgPart}`} target="_blank" rel="noopener">
             <img
-              src={`${imagesPrefix}/w_${
-                i.wbr
-              },c_fit,f_auto,q_auto:${qProfile}/${i.imgPart}`}
+              src={`${imagesPrefix}/w_${i.wbr},c_fit,f_auto,q_auto:${qProfile}/${i.imgPart}`}
               style={{ width: `${i.w}px`, height: `${i.h}px` }}
               alt={i.alt}
+              loading="lazy"
             />
           </a>
         ))}

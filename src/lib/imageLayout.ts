@@ -1,30 +1,22 @@
 import { ImgData } from '@src/cnst/images'
 
-function _getHeigth (
-  images: ImgData[],
-  containerWidth: number,
-  margin: number,
-): number {
+function _getHeigth(images: ImgData[], containerWidth: number, margin: number): number {
   const width = containerWidth - images.length * margin
   const r = images.reduce((r, img) => r + img.fullw / img.fullh, 0)
   return width / r // have to round down because Firefox will automatically roundup value with number of decimals > 3
 }
 
-function _setHeight (images: ImgData[], height: number): void {
+function _setHeight(images: ImgData[], height: number): void {
   images.forEach(img => {
-    img.w = Math.floor(height * img.fullw / img.fullh)
+    img.w = Math.floor((height * img.fullw) / img.fullh)
     img.h = Math.floor(height)
   })
-}
-
-function deepCopy<T> (o: T): T {
-  return JSON.parse(JSON.stringify(o))
 }
 
 /**
  * Mutates imgs: adds .w, .h
  */
-export function doImageLayout (
+export function doImageLayout(
   containerWidth: number,
   maxHeight: number,
   margin: number,

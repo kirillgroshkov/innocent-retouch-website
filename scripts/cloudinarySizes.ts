@@ -1,17 +1,11 @@
 /*
 
-ts-node -P scripts ./scripts/cloudinarySizes.ts
+yarn tsn ./scripts/cloudinarySizes.ts
 
 */
 
-require('dotenv').config()
-import * as P from 'bluebird'
-import * as fs from 'fs-extra'
-import { rootDir } from '../src/rootDir'
-import * as cloudinary from 'cloudinary'
+const cloudinary = require('cloudinary')
 import * as util from 'util'
-import * as path from 'path'
-import * as klawSync from 'klaw-sync'
 
 cloudinary.config({
   cloud_name: 'kirill',
@@ -24,9 +18,9 @@ const list = util.promisify(cloudinary.v2.api.resources)
 
 list({
   max_results: 500,
-}).then(r => {
-  const resources = r.resources
-  const images = r.resources.map(_r => `${_r.public_id}.${_r.format}`)
+}).then((r: any) => {
+  const resources = r.resources as any[]
+  const images = r.resources.map((_r: any) => `${_r.public_id}.${_r.format}`)
   console.log(images)
 
   const sizes = resources.reduce((_sizes, _r) => {

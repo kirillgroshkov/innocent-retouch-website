@@ -112,7 +112,7 @@ export const imagesAlt = {
 
 export const imagesPrefix = 'https://res.cloudinary.com/kirill'
 
-export function getImgData (segment: string): ImgData[] {
+export function getImgData(segment: string): ImgData[] {
   return images[segment].map(i => {
     const wh = imageSizes[i].split('x')
     return {

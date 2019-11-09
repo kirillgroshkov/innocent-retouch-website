@@ -3,8 +3,8 @@ class GoogleImageLayout {
   private HEIGHTS = []
   private margin = 8
 
-  private turnObjToArray (obj) {
-    return [].map.call(obj, function (element) {
+  private turnObjToArray(obj) {
+    return [].map.call(obj, function(element) {
       return element
     })
   }
@@ -20,7 +20,7 @@ class GoogleImageLayout {
    *
    * @return {[type]}        the height
    */
-  private _getHeigth (images, width, margin) {
+  private _getHeigth(images, width, margin) {
     width -= images.length * margin
 
     let r = 0,
@@ -28,23 +28,20 @@ class GoogleImageLayout {
 
     for (let i = 0; i < images.length; i++) {
       img = images[i]
-      r +=
-        parseInt(img.getAttribute('data-width')) /
-        parseInt(img.getAttribute('data-height'))
+      r += parseInt(img.getAttribute('data-width')) / parseInt(img.getAttribute('data-height'))
     }
 
     return width / r // have to round down because Firefox will automatically roundup value with number of decimals > 3
   }
 
-  private _setHeight (images, height) {
+  private _setHeight(images, height) {
     this.HEIGHTS.push(height)
     // console.log('set height ' + this.HEIGHTS.length)
 
     for (let i = 0; i < images.length; i++) {
       const img = images[i]
       img.style.width =
-        height *
-          parseInt(img.getAttribute('data-width')) /
+        (height * parseInt(img.getAttribute('data-width'))) /
           parseInt(img.getAttribute('data-height')) +
         'px'
       img.style.height = height + 'px'
@@ -54,7 +51,7 @@ class GoogleImageLayout {
     }
   }
 
-  init (): void {
+  init(): void {
     this.HEIGHTS = []
     const nodes = document.querySelectorAll('div[data-google-image-layout]')
     const length = nodes.length
@@ -67,7 +64,7 @@ class GoogleImageLayout {
     // console.log('aligned')
   }
 
-  private align (elem: HTMLElement): void {
+  private align(elem: HTMLElement): void {
     // get the data attribute
 
     const containerWidth = elem.clientWidth

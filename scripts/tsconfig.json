@@ -1,15 +1,13 @@
+//
+// tsconfig.json for /scripts
+//
 {
-  "compileOnSave": false,
+  "extends": "@naturalcycles/dev-lib/scripts/tsconfig.json",
   "compilerOptions": {
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "strict": false,
-    "strictNullChecks": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "target": "es5",
-    "typeRoots": ["node_modules/@types", "src/typings"],
-    "lib": ["es2016", "es2017", "dom"]
-  }
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["../src/*"]
+    }
+  },
+  "exclude": ["**/__exclude"]
 }
